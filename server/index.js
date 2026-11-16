@@ -55,7 +55,7 @@ app.use((err, _req, res, _next) => {
 });
 
 // Local development
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 if (process.env.NODE_ENV !== 'production') {
   connectDB()
