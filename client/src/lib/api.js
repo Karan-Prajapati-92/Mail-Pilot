@@ -1,5 +1,7 @@
-const BASE = `${import.meta.env.VITE_API_URL}/api`;
-
+// Use VITE_API_URL only if it is a real http(s) address (e.g. https://my-backend.onrender.com/api).
+// Anything else (empty, "undefined", a typo) falls back to the same-origin /api.
+const RAW_API = String(import.meta.env.VITE_API_URL || '').trim();
+const BASE = /^https?:\/\//i.test(RAW_API) ? RAW_API.replace(/\/+$/, '') : '/api';
 
 
 export const getToken = () => {
